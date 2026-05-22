@@ -3,9 +3,10 @@ import { Routes, Route, useLocation, Outlet } from "react-router-dom"
 import { AnimatePresence, motion } from "motion/react"
 import styled, { keyframes } from "styled-components"
 
-import usePrefersReducedMotion from "@utils/hooks/use-prefers-reduced-motion"
 import Header from "@components/header"
 import Footer from "@components/footer"
+
+import usePrefersReducedMotion from "@utils/hooks/use-prefers-reduced-motion"
 
 const Home = lazy(() => import("@pages/home"))
 const NotFound = lazy(() => import("@pages/not-found"))

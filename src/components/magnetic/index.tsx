@@ -1,9 +1,9 @@
 import React, { useRef, useCallback } from "react"
 import { motion, useSpring } from "motion/react"
 
-import usePrefersReducedMotion from "@utils/hooks/use-prefers-reduced-motion"
-
 import type { MagneticProps } from "./types"
+
+import usePrefersReducedMotion from "@utils/hooks/use-prefers-reduced-motion"
 
 const isTouchDevice = (): boolean =>
   typeof window !== "undefined" && window.matchMedia("(pointer: coarse)").matches
@@ -12,10 +12,10 @@ const SPRING_CONFIG = { stiffness: 180, damping: 18, mass: 0.6 }
 
 const Magnetic: React.FC<MagneticProps> = ({ children, strength = 0.25 }) => {
   const reducedMotion = usePrefersReducedMotion()
-  const ref = useRef<HTMLDivElement>(null)
-
   const x = useSpring(0, SPRING_CONFIG)
   const y = useSpring(0, SPRING_CONFIG)
+
+  const ref = useRef<HTMLDivElement>(null)
 
   const handleMouseMove = useCallback(
     (e: React.MouseEvent<HTMLDivElement>) => {

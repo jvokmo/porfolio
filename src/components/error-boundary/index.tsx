@@ -1,7 +1,7 @@
 import React from "react"
 
-import type { ErrorBoundaryProps, ErrorBoundaryState } from "./types"
 import { Container, Title, Message, ReloadButton } from "./styles"
+import type { ErrorBoundaryProps, ErrorBoundaryState } from "./types"
 
 class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundaryState> {
   constructor(props: ErrorBoundaryProps) {

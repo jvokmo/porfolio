@@ -1,7 +1,7 @@
 import React from "react"
-import { useLanguage } from "@contexts/language-context"
 
 import * as S from "./styles"
+import { useLanguage } from "@contexts/language-context"
 
 const LanguageToggle: React.FC = () => {
   const { language, toggleLanguage, t } = useLanguage()

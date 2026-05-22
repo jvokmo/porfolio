@@ -46,14 +46,18 @@ export const Inner = styled.div`
 `
 
 export const Wordmark = styled(Link)`
-  font-family: ${({ theme }) => theme.fonts.display};
-  font-size: 20px;
-  font-weight: 800;
+  display: inline-flex;
+  align-items: center;
   color: ${({ theme }) => theme.colors.ink};
-  letter-spacing: -0.02em;
   flex-shrink: 0;
   transition: color 0.2s ease;
   border-radius: ${({ theme }) => theme.radius.small};
+
+  svg {
+    height: 26px;
+    width: auto;
+    display: block;
+  }
 
   &:hover {
     color: ${({ theme }) => theme.colors.accent};

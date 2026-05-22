@@ -1,6 +1,9 @@
 import React from "react"
-import { useLanguage } from "@contexts/language-context"
+
 import * as S from "./styles"
+import { useLanguage } from "@contexts/language-context"
+
+import Logo from "@components/logo"
 
 const EMAIL = "joaoxdvitor33@gmail.com"
 const LINKEDIN = "https://www.linkedin.com/in/joaovitorsantos-dev"
@@ -8,6 +11,7 @@ const GITHUB = "https://github.com/jvokmo"
 
 const Footer: React.FC = () => {
   const { t } = useLanguage()
+
   const year = new Date().getFullYear()
 
   return (
@@ -37,7 +41,9 @@ const Footer: React.FC = () => {
           <S.Rights>
             &copy; {year} — {t("footer.rights")}
           </S.Rights>
-          <S.Wordmark>JV</S.Wordmark>
+          <S.Wordmark>
+            <Logo />
+          </S.Wordmark>
         </S.Bottom>
       </S.Inner>
     </S.Wrapper>

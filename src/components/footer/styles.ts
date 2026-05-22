@@ -91,10 +91,13 @@ export const Rights = styled.p`
 `
 
 export const Wordmark = styled.span`
-  font-family: ${({ theme }) => theme.fonts.display};
-  font-size: ${({ theme }) => theme.text.small};
-  font-weight: 800;
+  display: inline-flex;
   color: ${({ theme }) => theme.colors.background};
   opacity: 0.6;
-  letter-spacing: -0.02em;
+
+  svg {
+    height: 22px;
+    width: auto;
+    display: block;
+  }
 `

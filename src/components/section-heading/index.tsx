@@ -2,9 +2,10 @@ import React, { useId } from "react"
 import { motion } from "motion/react"
 import { useTheme } from "styled-components"
 
-import usePrefersReducedMotion from "@utils/hooks/use-prefers-reduced-motion"
-import type { SectionHeadingProps } from "./types"
 import * as S from "./styles"
+import type { SectionHeadingProps } from "./types"
+
+import usePrefersReducedMotion from "@utils/hooks/use-prefers-reduced-motion"
 
 const SectionHeading: React.FC<SectionHeadingProps> = ({
   eyebrow,
@@ -14,8 +15,8 @@ const SectionHeading: React.FC<SectionHeadingProps> = ({
   as,
 }) => {
   const reducedMotion = usePrefersReducedMotion()
-  const theme = useTheme()
   const uid = useId()
+  const theme = useTheme()
 
   return (
     <S.Wrapper>

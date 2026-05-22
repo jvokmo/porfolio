@@ -2,11 +2,11 @@ import React, { useEffect, useRef, useCallback } from "react"
 import { createPortal } from "react-dom"
 import { AnimatePresence } from "motion/react"
 
-import { useLanguage } from "@contexts/language-context"
-import usePrefersReducedMotion from "@utils/hooks/use-prefers-reduced-motion"
-
-import type { LightboxProps } from "./types"
 import * as S from "./styles"
+import type { LightboxProps } from "./types"
+import { useLanguage } from "@contexts/language-context"
+
+import usePrefersReducedMotion from "@utils/hooks/use-prefers-reduced-motion"
 
 const Lightbox: React.FC<LightboxProps> = ({
   images,
@@ -15,21 +15,37 @@ const Lightbox: React.FC<LightboxProps> = ({
   onClose,
   onIndexChange,
 }) => {
-  const { t } = useLanguage()
   const reducedMotion = usePrefersReducedMotion()
+  const { t } = useLanguage()
+
   const closeButtonRef = useRef<HTMLButtonElement>(null)
   const previousFocusRef = useRef<Element | null>(null)
 
   const total = images.length
   const current = images[index]
+  const backdropVariants = reducedMotion
+    ? undefined
+    : { hidden: { opacity: 0 }, visible: { opacity: 1 } }
+  const imageVariants = reducedMotion
+    ? undefined
+    : {
+        hidden: { opacity: 0, scale: 0.96 },
+        visible: { opacity: 1, scale: 1 },
+        exit: { opacity: 0, scale: 0.96 },
+      }
 
   const goPrev = useCallback(() => {
     onIndexChange((index - 1 + total) % total)
   }, [index, total, onIndexChange])
-
   const goNext = useCallback(() => {
     onIndexChange((index + 1) % total)
   }, [index, total, onIndexChange])
+
+  const handleBackdropClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (e.target === e.currentTarget) {
+      onClose()
+    }
+  }
 
   // Lock body scroll and save/restore focus
   useEffect(() => {
@@ -64,24 +80,6 @@ const Lightbox: React.FC<LightboxProps> = ({
     window.addEventListener("keydown", handleKey)
     return () => window.removeEventListener("keydown", handleKey)
   }, [open, total, goPrev, goNext, onClose])
-
-  const backdropVariants = reducedMotion
-    ? undefined
-    : { hidden: { opacity: 0 }, visible: { opacity: 1 } }
-
-  const imageVariants = reducedMotion
-    ? undefined
-    : {
-        hidden: { opacity: 0, scale: 0.96 },
-        visible: { opacity: 1, scale: 1 },
-        exit: { opacity: 0, scale: 0.96 },
-      }
-
-  const handleBackdropClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (e.target === e.currentTarget) {
-      onClose()
-    }
-  }
 
   return createPortal(
     <AnimatePresence>

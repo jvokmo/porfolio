@@ -1,10 +1,10 @@
 import React from "react"
 import { Link } from "react-router-dom"
 
-import { useLanguage } from "@contexts/language-context"
-import usePrefersReducedMotion from "@utils/hooks/use-prefers-reduced-motion"
-
 import * as S from "./styles"
+import { useLanguage } from "@contexts/language-context"
+
+import usePrefersReducedMotion from "@utils/hooks/use-prefers-reduced-motion"
 
 const EASE = [0.25, 0.1, 0.25, 1] as const
 
@@ -12,8 +12,8 @@ const ENTER = { opacity: 0, y: 20 }
 const VISIBLE = { opacity: 1, y: 0 }
 
 const NotFound: React.FC = () => {
-  const { t } = useLanguage()
   const reducedMotion = usePrefersReducedMotion()
+  const { t } = useLanguage()
 
   if (reducedMotion) {
     return (

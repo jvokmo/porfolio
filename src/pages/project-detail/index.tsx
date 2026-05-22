@@ -2,16 +2,17 @@ import React, { useState, useEffect, useRef } from "react"
 import { useParams, Navigate } from "react-router-dom"
 import { motion, useScroll, useTransform } from "motion/react"
 
+import * as S from "./styles"
 import { useLanguage } from "@contexts/language-context"
-import usePrefersReducedMotion from "@utils/hooks/use-prefers-reduced-motion"
-import { projects } from "@data/projects"
+
 import Reveal from "@components/reveal"
 import Magnetic from "@components/magnetic"
 import Lightbox from "@components/lightbox"
 import Carousel from "@components/carousel"
 import KeedSplitLayout from "./sections/keed-split-layout"
 
-import * as S from "./styles"
+import usePrefersReducedMotion from "@utils/hooks/use-prefers-reduced-motion"
+import { projects } from "@data/projects"
 
 const EASE = [0.25, 0.1, 0.25, 1] as const
 
@@ -57,8 +58,9 @@ const CoverImage: React.FC<CoverImageProps> = ({ src, title, pendingLabel, reduc
 
 const ProjectDetail: React.FC = () => {
   const { slug } = useParams<{ slug: string }>()
-  const { t } = useLanguage()
   const reducedMotion = usePrefersReducedMotion()
+  const { t } = useLanguage()
+
   const [lightboxOpen, setLightboxOpen] = useState(false)
   const [lightboxIndex, setLightboxIndex] = useState(0)
 

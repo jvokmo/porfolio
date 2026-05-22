@@ -1,9 +1,10 @@
 import React from "react"
-import { useLanguage } from "@contexts/language-context"
-import SectionHeading from "@components/section-heading"
-import Reveal from "@components/reveal"
 
 import * as S from "./styles"
+import { useLanguage } from "@contexts/language-context"
+
+import SectionHeading from "@components/section-heading"
+import Reveal from "@components/reveal"
 
 const About: React.FC = () => {
   const { t } = useLanguage()

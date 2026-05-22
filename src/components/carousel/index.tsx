@@ -2,11 +2,11 @@ import React, { useState, useCallback, useRef, useEffect } from "react"
 import { AnimatePresence } from "motion/react"
 import type { Variants } from "motion/react"
 
-import { useLanguage } from "@contexts/language-context"
-import usePrefersReducedMotion from "@utils/hooks/use-prefers-reduced-motion"
-
-import type { CarouselProps } from "./types"
 import * as S from "./styles"
+import type { CarouselProps } from "./types"
+import { useLanguage } from "@contexts/language-context"
+
+import usePrefersReducedMotion from "@utils/hooks/use-prefers-reduced-motion"
 
 const SWIPE_THRESHOLD = 40
 const SPRING = { type: "spring" as const, stiffness: 320, damping: 32 }
@@ -20,15 +20,27 @@ const Carousel: React.FC<CarouselProps> = ({
   onImageClick,
   label = "",
 }) => {
-  const { t } = useLanguage()
   const reducedMotion = usePrefersReducedMotion()
+  const { t } = useLanguage()
+
   const [index, setIndex] = useState(0)
   const [direction, setDirection] = useState<Direction>(1)
   const rootRef = useRef<HTMLDivElement>(null)
+  const dragStart = useRef<number | null>(null)
 
   const total = images.length
   const current = images[index]
   const hasRealSrc = !!current?.src
+  const prevLabel = t("a11y.carouselPrev")
+  const nextLabel = t("a11y.carouselNext")
+  const slideTransition = reducedMotion ? { duration: 0 } : SPRING
+  const slideVariants: Variants | undefined = reducedMotion
+    ? undefined
+    : {
+        enter: (d: Direction) => ({ x: d * 60, opacity: 0 }),
+        center: { x: 0, opacity: 1 },
+        exit: (d: Direction) => ({ x: d * -60, opacity: 0 }),
+      }
 
   const go = useCallback(
     (dir: Direction) => {
@@ -37,24 +49,9 @@ const Carousel: React.FC<CarouselProps> = ({
     },
     [total],
   )
-
   const goPrev = useCallback(() => go(-1), [go])
   const goNext = useCallback(() => go(1), [go])
 
-  // Keyboard navigation when carousel is focused
-  useEffect(() => {
-    const el = rootRef.current
-    if (!el) return
-    const handler = (e: KeyboardEvent) => {
-      if (e.key === "ArrowLeft") { e.preventDefault(); goPrev() }
-      if (e.key === "ArrowRight") { e.preventDefault(); goNext() }
-    }
-    el.addEventListener("keydown", handler)
-    return () => el.removeEventListener("keydown", handler)
-  }, [goPrev, goNext])
-
-  // Pointer swipe
-  const dragStart = useRef<number | null>(null)
   const onPointerDown = (e: React.PointerEvent) => {
     dragStart.current = e.clientX
   }
@@ -67,18 +64,17 @@ const Carousel: React.FC<CarouselProps> = ({
     else goPrev()
   }
 
-  const slideVariants: Variants | undefined = reducedMotion
-    ? undefined
-    : {
-        enter: (d: Direction) => ({ x: d * 60, opacity: 0 }),
-        center: { x: 0, opacity: 1 },
-        exit: (d: Direction) => ({ x: d * -60, opacity: 0 }),
-      }
-
-  const slideTransition = reducedMotion ? { duration: 0 } : SPRING
-
-  const prevLabel = t("a11y.carouselPrev")
-  const nextLabel = t("a11y.carouselNext")
+  // Keyboard navigation when carousel is focused
+  useEffect(() => {
+    const el = rootRef.current
+    if (!el) return
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === "ArrowLeft") { e.preventDefault(); goPrev() }
+      if (e.key === "ArrowRight") { e.preventDefault(); goNext() }
+    }
+    el.addEventListener("keydown", handler)
+    return () => el.removeEventListener("keydown", handler)
+  }, [goPrev, goNext])
 
   const slideContent = (
     <S.SlidesClip

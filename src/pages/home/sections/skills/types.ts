@@ -37,7 +37,6 @@ export const SKILL_GROUPS: SkillGroup[] = [
     key: "domains",
     items: [
       "paymentIntermediation",
-      "digitalMarketplace",
       "checkout",
       "fiscalIssuance",
       "highVolumeSystems",

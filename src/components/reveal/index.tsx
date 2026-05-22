@@ -1,9 +1,9 @@
 import React from "react"
 import { motion } from "motion/react"
 
-import usePrefersReducedMotion from "@utils/hooks/use-prefers-reduced-motion"
-
 import type { RevealProps } from "./types"
+
+import usePrefersReducedMotion from "@utils/hooks/use-prefers-reduced-motion"
 
 // Pre-created at module scope so the `as` prop can pick a real motion element
 const motionTags = {

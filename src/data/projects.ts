@@ -1,5 +1,5 @@
-import keedCover from "@src/assets/projects/keed/keed-cover.png"
-import notaFlowCover from "@src/assets/projects/nota-flow/nota-flow-cover.png"
+import keedCover from "@assets/projects/keed/keed-cover.png"
+import notaFlowCover from "@assets/projects/nota-flow/nota-flow-cover.png"
 
 const keedImages = import.meta.glob<string>(
   "../assets/projects/keed/*.{png,jpg,jpeg,webp}",

@@ -1,4 +1,5 @@
 import React from "react"
+
 import Hero from "./sections/hero"
 import Projects from "./sections/projects"
 import About from "./sections/about"

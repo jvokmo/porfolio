@@ -1,6 +1,6 @@
-# Portfólio — João Vitor
+# Jayvee Portfolio
 
-Site pessoal de João Vitor, desenvolvedor front-end. Funciona como uma vitrine
+Meu site pessoal como desenvolvedor front-end. Funciona como uma vitrine
 de projetos: cada projeto tem uma página dedicada de case study, com galeria de
 telas e detalhes técnicos.
 

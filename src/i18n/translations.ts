@@ -9,11 +9,11 @@ export const translations: Record<Language, TranslationDictionary> = {
     },
     hero: {
       badge: "Disponível para projetos",
-      name: "João Vitor",
-      role: "Desenvolvedor Front-end",
+      name: "Olá, sou o João Vitor.",
+      role: "Jayvee | Desenvolvedor Front-end",
       intro:
-        "Cada detalhe importa — do timing de uma animação à escolha de uma fonte. Construo interfaces que as pessoas queiram usar.",
-      ctaContact: "Falar comigo",
+        "Cada detalhe importa — do timing de uma animação à escolha de uma fonte. Construo interfaces orientadas a resultado.",
+      ctaContact: "Fale comigo",
       ctaProjects: "Ver projetos",
       scrollHint: "Rolar",
       emailLabel: "E-mail",
@@ -22,9 +22,9 @@ export const translations: Record<Language, TranslationDictionary> = {
     },
     about: {
       eyebrow: "// sobre",
-      titleLead: "Código e design",
-      emphasis: "são a mesma coisa",
-      body: "Sou um desenvolvedor front-end que acredita que código e design são a mesma coisa quando feitos com atenção. Gosto de trabalhar no espaço entre o visual e o técnico — onde uma transição bem pensada muda completamente a percepção de um produto. Tenho experiência com stacks modernas, mas o que me motiva mesmo é construir interfaces que as pessoas queiram usar.",
+      titleLead: "Detalhe que",
+      emphasis: "gera resultado",
+      body: "Sou desenvolvedor front-end e trabalho no ponto onde o visual encontra o técnico. Para mim, uma boa interface não é só a mais bonita — é a que conduz a pessoa ao que ela precisa com clareza e ritmo. É cuidando de cada detalhe, do timing de uma animação à hierarquia de uma tela, que transformo a interface em resultado para o produto.",
     },
     skills: {
       eyebrow: "// habilidades",
@@ -59,14 +59,14 @@ export const translations: Record<Language, TranslationDictionary> = {
     },
     projects: {
       eyebrow: "// projetos",
-      title: "Tudo o que foi construído",
+      title: "Interfaces em destaque",
       screenshotPending: "// screenshot pendente",
       viewProject: "Ver projeto",
     },
     contact: {
       eyebrow: "// contato",
       title: "Vamos conversar",
-      body: "Aberto a colaborações, freelas e oportunidades interessantes. Prefiro uma troca direta — manda uma mensagem.",
+      body: "Aberto a colaborações e oportunidades interessantes. Prefiro uma troca direta — manda uma mensagem.",
       emailLabel: "E-mail",
       linkedinLabel: "LinkedIn",
       githubLabel: "GitHub",
@@ -122,7 +122,7 @@ export const translations: Record<Language, TranslationDictionary> = {
       "nota-flow.process.2":
         "Prototipagem do checkout e do painel, com testes de usabilidade em três rodadas iterativas.",
       "nota-flow.process.3":
-        "Implementação do front-end com Next.js, integração com a API de pagamentos e a camada fiscal via endpoints Node.js.",
+        "Implementação do front-end com React, integração com a API de pagamentos e a camada fiscal via endpoints Node.js.",
       "nota-flow.gallery.1":
         "Tela de login do NotaFlow, com uma animação em shader compondo o plano de fundo — o primeiro contato do usuário com o produto.",
       "nota-flow.gallery.2":
@@ -214,10 +214,10 @@ export const translations: Record<Language, TranslationDictionary> = {
     },
     hero: {
       badge: "Available for projects",
-      name: "João Vitor",
-      role: "Front-end Developer",
+      name: "Hi, I'm João Vitor.",
+      role: "Jayvee | Front-end Developer",
       intro:
-        "Every detail matters — from animation timing to typeface choice. I build interfaces people actually want to use.",
+        "Every detail matters — from animation timing to typeface choice. I build result-oriented interfaces.",
       ctaContact: "Get in touch",
       ctaProjects: "View projects",
       scrollHint: "Scroll",
@@ -227,9 +227,9 @@ export const translations: Record<Language, TranslationDictionary> = {
     },
     about: {
       eyebrow: "// about",
-      titleLead: "Code and design",
-      emphasis: "are the same thing",
-      body: "I'm a front-end developer who believes that code and design are the same thing when done with intention. I like working in the space between visual and technical — where a well-considered transition completely shifts how a product feels. I have experience with modern stacks, but what really drives me is building interfaces people actually want to use.",
+      titleLead: "Detail that",
+      emphasis: "drives results",
+      body: "I'm a front-end developer working at the point where the visual meets the technical. To me, a good interface isn't just the prettiest one — it's the one that guides people to what they need with clarity and rhythm. By caring for every detail, from the timing of an animation to the hierarchy of a screen, I turn the interface into results for the product.",
     },
     skills: {
       eyebrow: "// skills",
@@ -264,14 +264,14 @@ export const translations: Record<Language, TranslationDictionary> = {
     },
     projects: {
       eyebrow: "// projects",
-      title: "Everything that was built",
+      title: "Featured interfaces",
       screenshotPending: "// screenshot pending",
       viewProject: "View project",
     },
     contact: {
       eyebrow: "// contact",
       title: "Let's talk",
-      body: "Open to collaborations, freelance work, and interesting opportunities. I prefer a direct conversation — send a message.",
+      body: "Open to collaborations and interesting opportunities. I prefer a direct conversation — send a message.",
       emailLabel: "Email",
       linkedinLabel: "LinkedIn",
       githubLabel: "GitHub",
@@ -327,7 +327,7 @@ export const translations: Record<Language, TranslationDictionary> = {
       "nota-flow.process.2":
         "Checkout and dashboard prototyping, with usability tests across three iterative rounds.",
       "nota-flow.process.3":
-        "Front-end implementation with Next.js, integration with the payment API and the fiscal layer via Node.js endpoints.",
+        "Front-end implementation with React, integration with the payment API and the fiscal layer via Node.js endpoints.",
       "nota-flow.gallery.1":
         "NotaFlow login screen, with a shader animation composing the background — the user's first contact with the product.",
       "nota-flow.gallery.2":

@@ -1,10 +1,11 @@
 import React from "react"
+
+import * as S from "./styles"
+import { SKILL_GROUPS } from "./types"
 import { useLanguage } from "@contexts/language-context"
+
 import SectionHeading from "@components/section-heading"
 import Reveal from "@components/reveal"
-
-import { SKILL_GROUPS } from "./types"
-import * as S from "./styles"
 
 const Skills: React.FC = () => {
   const { t } = useLanguage()

@@ -1,14 +1,16 @@
 import React, { useState } from "react"
 
+import * as S from "./keed-split-layout-styles"
+
 import { useLanguage } from "@contexts/language-context"
-import usePrefersReducedMotion from "@utils/hooks/use-prefers-reduced-motion"
+
 import Reveal from "@components/reveal"
 import Lightbox from "@components/lightbox"
 import Carousel from "@components/carousel"
 import type { LightboxImage } from "@components/lightbox/types"
-import type { Project, ProjectSubProject, ProjectGalleryImage } from "@data/projects"
 
-import * as S from "./keed-split-layout-styles"
+import usePrefersReducedMotion from "@utils/hooks/use-prefers-reduced-motion"
+import type { Project, ProjectSubProject, ProjectGalleryImage } from "@data/projects"
 
 // ─── Mobile gallery image (portrait 9:16, shown in a row) ────────────────────
 
@@ -29,7 +31,9 @@ const MobileImageItem: React.FC<MobileImageItemProps> = ({
 }) => {
   const { t } = useLanguage()
   const reducedMotion = usePrefersReducedMotion()
+  
   const [imgError, setImgError] = useState(false)
+
   const showPlaceholder = !image.src || imgError
   const isClickable = !showPlaceholder && !!onClick
 

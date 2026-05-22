@@ -3,12 +3,18 @@ import { useLocation, useNavigate } from "react-router-dom"
 import { AnimatePresence, motion } from "motion/react"
 import { useTheme } from "styled-components"
 
+import * as S from "./styles"
+import type { NavItem } from "./types"
 import { useLanguage } from "@contexts/language-context"
-import usePrefersReducedMotion from "@utils/hooks/use-prefers-reduced-motion"
+
 import ThemeToggle from "@components/theme-toggle"
 import LanguageToggle from "@components/language-toggle"
-import type { NavItem } from "./types"
-import * as S from "./styles"
+import Logo from "@components/logo"
+
+import usePrefersReducedMotion from "@utils/hooks/use-prefers-reduced-motion"
+
+import MenuIcon from "@assets/icons/general/menu-icon.svg?react"
+import CloseIcon from "@assets/icons/general/close-icon.svg?react"
 
 const NAV_ITEMS: NavItem[] = [
   { hash: "projetos", labelKey: "nav.projects" },
@@ -21,70 +27,6 @@ const scrollToHash = (hash: string, reducedMotion: boolean) => {
   if (!el) return
   el.scrollIntoView({ behavior: reducedMotion ? "instant" : "smooth" })
 }
-
-const HamburgerIcon: React.FC<{ opened: boolean }> = ({ opened }) => (
-  <svg
-    width="16"
-    height="16"
-    viewBox="0 0 16 16"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    aria-hidden="true"
-  >
-    {opened ? (
-      <>
-        <line
-          x1="3"
-          y1="3"
-          x2="13"
-          y2="13"
-          stroke="currentColor"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-        />
-        <line
-          x1="13"
-          y1="3"
-          x2="3"
-          y2="13"
-          stroke="currentColor"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-        />
-      </>
-    ) : (
-      <>
-        <line
-          x1="2"
-          y1="5"
-          x2="14"
-          y2="5"
-          stroke="currentColor"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-        />
-        <line
-          x1="2"
-          y1="8"
-          x2="14"
-          y2="8"
-          stroke="currentColor"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-        />
-        <line
-          x1="2"
-          y1="11"
-          x2="14"
-          y2="11"
-          stroke="currentColor"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-        />
-      </>
-    )}
-  </svg>
-)
 
 type MobileMenuProps = {
   items: NavItem[]
@@ -122,15 +64,48 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ items, reducedMotion, t, onClos
 )
 
 const Header: React.FC = () => {
-  const { t } = useLanguage()
   const location = useLocation()
   const navigate = useNavigate()
   const reducedMotion = usePrefersReducedMotion()
+  const { t } = useLanguage()
   const theme = useTheme()
 
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const pendingHashRef = useRef<string | null>(null)
+
+  // Active state: home route with the matching hash
+  const activeHash =
+    location.pathname === "/" ? location.hash.replace("#", "") || null : null
+
+  const handleNavClick = useCallback(
+    (hash: string) => {
+      if (location.pathname === "/") {
+        navigate(`/#${hash}`, { replace: true })
+        scrollToHash(hash, reducedMotion)
+      } else {
+        pendingHashRef.current = hash
+        navigate(`/#${hash}`)
+      }
+    },
+    [location.pathname, navigate, reducedMotion]
+  )
+
+  const handleWordmarkClick = useCallback(() => {
+    const sameRoute = location.pathname === "/"
+    window.scrollTo({
+      top: 0,
+      behavior: sameRoute && !reducedMotion ? "smooth" : "instant",
+    })
+  }, [location.pathname, reducedMotion])
+
+  const closeMenu = useCallback(() => {
+    setMenuOpen(false)
+  }, [])
+
+  const toggleMenu = useCallback(() => {
+    setMenuOpen((v) => !v)
+  }, [])
 
   useEffect(() => {
     const handleScroll = () => {
@@ -174,43 +149,11 @@ const Header: React.FC = () => {
     }
   }, [location.pathname, reducedMotion])
 
-  const handleNavClick = useCallback(
-    (hash: string) => {
-      if (location.pathname === "/") {
-        scrollToHash(hash, reducedMotion)
-        window.history.replaceState(null, "", `/#${hash}`)
-      } else {
-        pendingHashRef.current = hash
-        navigate(`/#${hash}`)
-      }
-    },
-    [location.pathname, navigate, reducedMotion]
-  )
-
-  const handleWordmarkClick = useCallback(() => {
-    const sameRoute = location.pathname === "/"
-    window.scrollTo({
-      top: 0,
-      behavior: sameRoute && !reducedMotion ? "smooth" : "instant",
-    })
-  }, [location.pathname, reducedMotion])
-
-  const closeMenu = useCallback(() => {
-    setMenuOpen(false)
-  }, [])
-
-  const toggleMenu = useCallback(() => {
-    setMenuOpen((v) => !v)
-  }, [])
-
-  // Active state: home route with the matching hash
-  const activeHash = location.pathname === "/" ? window.location.hash.replace("#", "") : null
-
   return (
     <S.Wrapper $scrolled={scrolled}>
       <S.Inner>
-        <S.Wordmark to="/" onClick={handleWordmarkClick}>
-          JV
+        <S.Wordmark to="/" aria-label="Jayvee Portfolio" onClick={handleWordmarkClick}>
+          <Logo />
         </S.Wordmark>
 
         <S.Nav aria-label={t("a11y.primaryNav")}>
@@ -254,7 +197,7 @@ const Header: React.FC = () => {
             aria-label={t("a11y.menu")}
             aria-expanded={menuOpen}
           >
-            <HamburgerIcon opened={menuOpen} />
+            {menuOpen ? <CloseIcon /> : <MenuIcon />}
           </S.MenuButton>
         </S.Controls>
       </S.Inner>

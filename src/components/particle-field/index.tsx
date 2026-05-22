@@ -1,7 +1,9 @@
 import React, { useRef, useEffect, useCallback } from "react"
 import { useTheme } from "styled-components"
-import usePrefersReducedMotion from "@utils/hooks/use-prefers-reduced-motion"
+
 import type { ParticleFieldProps } from "./types"
+
+import usePrefersReducedMotion from "@utils/hooks/use-prefers-reduced-motion"
 
 // ------------------------------------------------------------
 // Constants
@@ -116,16 +118,6 @@ const ParticleField: React.FC<ParticleFieldProps> = ({
   // Pointer influence (canvas-space coordinates, null when outside)
   const pointerRef = useRef<{ x: number; y: number } | null>(null)
 
-  useEffect(() => {
-    speedRef.current = speed
-    densityRef.current = density
-  }, [speed, density])
-
-  useEffect(() => {
-    inkRef.current = hexToRgb(theme.colors.ink)
-    accentRef.current = hexToRgb(theme.colors.accent)
-  }, [theme.colors.ink, theme.colors.accent])
-
   const init = useCallback((): (() => void) | undefined => {
     const canvas = canvasRef.current
     if (!canvas) return undefined
@@ -227,6 +219,16 @@ const ParticleField: React.FC<ParticleFieldProps> = ({
       cancelAnimationFrame(rafRef.current)
     }
   }, [reducedMotion])
+
+  useEffect(() => {
+    speedRef.current = speed
+    densityRef.current = density
+  }, [speed, density])
+
+  useEffect(() => {
+    inkRef.current = hexToRgb(theme.colors.ink)
+    accentRef.current = hexToRgb(theme.colors.accent)
+  }, [theme.colors.ink, theme.colors.accent])
 
   // Main lifecycle
   useEffect(() => {
