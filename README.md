@@ -1,11 +1,18 @@
-# Portfólio — JV
+# Portfólio — João Vitor
 
-Landing page pessoal de JV, desenvolvedor front-end. Reúne uma vitrine de
-componentes, uma galeria de projetos e informações de contato.
+Site pessoal de João Vitor, desenvolvedor front-end. Funciona como uma vitrine
+de projetos: cada projeto tem uma página dedicada de case study, com galeria de
+telas e detalhes técnicos.
+
+Tema claro/escuro e interface em português e inglês.
 
 ## Stack
 
 React · TypeScript · Vite · styled-components · react-router-dom · Motion
+
+## Requisitos
+
+Node.js 22.12+ (exigido pelo Vite 8).
 
 ## Como rodar
 
