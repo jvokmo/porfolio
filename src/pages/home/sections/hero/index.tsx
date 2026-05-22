@@ -123,7 +123,7 @@ const Hero: React.FC = () => {
           }
         >
           <S.SocialLink
-            href="mailto:joaoxdvitor33@gmail.com"
+            href="mailto:joao@jayvee.com.br"
             aria-label={t("hero.emailLabel")}
           >
             <MailIcon />

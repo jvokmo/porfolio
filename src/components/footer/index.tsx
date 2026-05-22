@@ -5,7 +5,7 @@ import { useLanguage } from "@contexts/language-context"
 
 import Logo from "@components/logo"
 
-const EMAIL = "joaoxdvitor33@gmail.com"
+const EMAIL = "joao@jayvee.com.br"
 const LINKEDIN = "https://www.linkedin.com/in/joaovitorsantos-dev"
 const GITHUB = "https://github.com/jvokmo"
 

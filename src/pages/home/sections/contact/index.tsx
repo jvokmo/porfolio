@@ -16,8 +16,8 @@ type ContactEntry = {
 const CONTACT_LINKS: ContactEntry[] = [
   {
     labelKey: "contact.emailLabel",
-    href: "mailto:joaoxdvitor33@gmail.com",
-    meta: "joaoxdvitor33@gmail.com",
+    href: "mailto:joao@jayvee.com.br",
+    meta: "joao@jayvee.com.br",
     external: false,
   },
   {
