@@ -12,7 +12,7 @@ React · TypeScript · Vite · styled-components · react-router-dom · Motion
 
 ## Requisitos
 
-Node.js 22.12+ (exigido pelo Vite 8).
+Node.js 22.12+.
 
 ## Como rodar
 
