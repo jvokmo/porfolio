@@ -161,10 +161,11 @@ export const translations: Record<Language, TranslationDictionary> = {
       "keed.platform.description":
         "A plataforma web do KeedPay é onde o produtor gerencia todo o negócio: cadastro de produtos digitais e físicos, checkout customizável, área de membros para cursos, sistema de afiliados, gestão pós-venda e insights de performance e pagamentos com apoio de IA. Uma interface densa em informação, desenhada para manter a clareza mesmo com muitos módulos. Na plataforma web, atuei tanto no desenvolvimento front-end quanto no back-end.",
       "keed.platform.gallery.1":
-        "Tela de Insights de Performance — valores transacionados, desempenho dos produtos e recomendações da IA para melhorar os resultados",
+        "Tela de login do KeedPay, com uma animação em shader compondo o plano de fundo — o primeiro contato do produtor com a plataforma.",
       "keed.platform.gallery.2":
+        "Tela de Insights de Performance — valores transacionados, desempenho dos produtos e recomendações da IA para melhorar os resultados",
+      "keed.platform.gallery.3":
         "Tela de Insights de Pagamentos — análise de conversão e recomendações da IA sobre o fluxo de pagamento",
-      "keed.platform.gallery.3": "Tela de checkout gerada via payment link",
       "keed.mobile.name": "Keed Mobile",
       "keed.mobile.description":
         "O aplicativo do KeedPay é a versão mobile da plataforma, voltada ao acompanhamento da operação: vendas e comissões em tempo real, notificações de pagamentos e uma visão rápida do desempenho dos produtos. As telas seguem o padrão visual da plataforma web, adaptadas ao uso em celular.",
@@ -366,10 +367,11 @@ export const translations: Record<Language, TranslationDictionary> = {
       "keed.platform.description":
         "The KeedPay web platform is where producers manage the whole business: registering digital and physical products, a customizable checkout, a members area for courses, an affiliate system, post-sale management, and performance and payment insights backed by AI. An information-dense interface, designed to stay clear even with many modules. On the web platform, I worked on both front-end and back-end development.",
       "keed.platform.gallery.1":
-        "Performance Insights screen — transacted values, product performance, and AI recommendations to improve results",
+        "KeedPay login screen, with a shader animation composing the background — the producer's first contact with the platform.",
       "keed.platform.gallery.2":
+        "Performance Insights screen — transacted values, product performance, and AI recommendations to improve results",
+      "keed.platform.gallery.3":
         "Payment Insights screen — conversion analysis and AI recommendations on the payment flow",
-      "keed.platform.gallery.3": "Checkout screen generated from a payment link",
       "keed.mobile.name": "Keed Mobile",
       "keed.mobile.description":
         "The KeedPay app is the mobile version of the platform, focused on tracking the operation: real-time sales and commissions, payment notifications, and a quick view of product performance. The screens follow the web platform's visual standard, adapted for phone use.",

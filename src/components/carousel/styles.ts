@@ -107,7 +107,8 @@ export const Slide = styled(motion.div)<SlideProps>`
 export const SlideImg = styled.img`
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
+  object-position: top;
   display: block;
 `
 

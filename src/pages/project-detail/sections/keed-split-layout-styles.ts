@@ -164,7 +164,8 @@ export const MobileImageWrapper = styled.div<MobileImageWrapperProps>`
 export const MobileImg = styled(motion.img)`
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
+  object-position: top;
 `
 
 export const MobilePlaceholder = styled.div`
